@@ -6,6 +6,6 @@ COPY . .
 
 EXPOSE 3000
 
-RUN npm run build
+RUN npm ci && npm run build
 
 CMD ["node", "/var/www/dist/index.js"]
