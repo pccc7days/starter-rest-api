@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const dynamodb = require('@cyclic.sh/dynamodb')
+const AWS = require('aws-sdk')
 const db = dynamodb(process.env.CYCLIC_DB)
+const s3 = new AWS.S3()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -19,6 +21,24 @@ app.use(express.urlencoded({ extended: true }))
 // }
 // app.use(express.static('public', options))
 // #############################################################################
+
+app.get('/dev', async  (req, res) => {
+// store something
+  await s3.putObject({
+    Body: JSON.stringify({key:"asd"}),
+    Bucket: process.env.BUCKET,
+    Key: "some_files/my_file.json",
+  }).promise()
+
+// get it back
+  let my_file = await s3.getObject({
+    Bucket: process.env.BUCKET,
+    Key: "some_files/my_file.json",
+  }).promise()
+
+  console.log(JSON.parse(my_file.Body))
+  res.end()
+})
 
 // Create or Update an item
 app.post('/:col/:key', async (req, res) => {
