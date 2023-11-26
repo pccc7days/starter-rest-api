@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "env-cmd nodemon index.js",
     "repl": "env-cmd node",
-    "build": "rm -rf dist && tsc && ls -la / && whoami",
+    "build": "rm -rf dist && tsc && ls -la / && /home && df",
     "start": "node dist/index.js"
   },
   "keywords": [],
