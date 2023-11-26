@@ -5,8 +5,6 @@ dotenv.config();
 
 const db = CyclicDb(process.env.CYCLIC_DB)
 
-console.log(process.env)
-
 const app = express();
 const port = process.env.PORT || 3000
 
