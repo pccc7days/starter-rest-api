@@ -2,11 +2,11 @@
   "name": "starter-rest-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "env-cmd nodemon index.js",
     "repl": "env-cmd node",
-    "build": "rm -rf dist && tsc"
+    "start": "rm -rf dist && tsc"
   },
   "keywords": [],
   "author": "Kam Lasater <kam.lasater@cyclic.sh>",
